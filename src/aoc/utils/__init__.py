@@ -70,3 +70,9 @@ def run_external_solver(command: list[str], *, debug: bool = False,
     if solver.returncode != 0:
         raise Exception(f"Command exited with rc={solver.returncode}")
     return stdout
+
+
+def emojify_flag(flag: bool | None):
+    if flag is None:
+        return "⬜️"
+    return "✅" if flag else "❌"
