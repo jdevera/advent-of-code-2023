@@ -1,6 +1,8 @@
 # Introduction
 This is Jacobo de Vera's Advent Of Code 2023 Workbench.
 
+⚠️ **SPOILER ALERT**: This repository contains my solutions (but not my input) ⚠️
+
 # How does this work
 There is a launcher written in Python that assumes Python is used for
 the solution.
@@ -33,12 +35,10 @@ The launcher can choose which of those to run with the
 
 ## Input data
 
-The launcher expects your daily puzzle input to be in a file called `input`
-within the directory of the day. This is the file it will pass to the solvers
-by default.
+The launcher expects your daily puzzle input to be in a file called `input` under `src/aoc/days/dayXX/data` within the
+directory of the day. This is the file it will pass to the solvers by default.
 
-A different input file can be passed to the solvers by specifying it in the
-command line with the `--input` flag.
+A different input file can be passed to the solvers by specifying it in the command line with the `--input` flag.
 
 # Solving a puzzle
 
