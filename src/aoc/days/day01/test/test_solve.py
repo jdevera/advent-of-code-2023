@@ -1,36 +1,34 @@
-import pytest
-
 from aoc.days import day01 as today
 
-# TODO: Write the solutions here once you have them verified
-SOLUTIONS: tuple[str | None, ...] = (
-    None,
-    None
-)
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_first_example(input_file_factory):
     input_file = input_file_factory("""
-        TODO: Replace with example for part 1, can be indented 
+        1abc2
+        pqr3stu8vwx
+        a1b2c3d4e5f
+        treb7uchet
         """)
-    assert today.solve_first(input_file) == 'SOLUTION TO PART 1'
+    assert today.solve_first(input_file) == '142'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_example(input_file_factory):
     input_file = input_file_factory("""
-        TODO: Replace with example for part 2, can be indented 
+        two1nine
+        eightwothree
+        abcone2threexyz
+        xtwone3four
+        4nineeightseven2
+        zoneight234
+        7pqrstsixteen
         """)
-    assert today.solve_second(input_file) == 'SOLUTION TO PART 2'
+    assert today.solve_second(input_file) == '281'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_first_solution(day_input):
-    assert SOLUTIONS[0] is not None
-    assert today.solve_first(day_input) == SOLUTIONS[0]
+def test_first_solution(day_input, part1_solution):
+    assert part1_solution is not None
+    assert today.solve_first(day_input) == part1_solution
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_second_solution(day_input):
-    assert SOLUTIONS[1] is not None
-    assert today.solve_second(day_input) == SOLUTIONS[1]
+def test_second_solution(day_input, part2_solution):
+    assert part2_solution is not None
+    assert today.solve_second(day_input) == part2_solution
