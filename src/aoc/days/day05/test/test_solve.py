@@ -1,36 +1,58 @@
-import pytest
 
 from aoc.days import day05 as today
 
-# TODO: Write the solutions here once you have them verified
-SOLUTIONS: tuple[str | None, ...] = (
-    None,
-    None
-)
+EXAMPLE_INPUT = """
+        seeds: 79 14 55 13
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
+        seed-to-soil map:
+        50 98 2
+        52 50 48
+
+        soil-to-fertilizer map:
+        0 15 37
+        37 52 2
+        39 0 15
+
+        fertilizer-to-water map:
+        49 53 8
+        0 11 42
+        42 0 7
+        57 7 4
+
+        water-to-light map:
+        88 18 7
+        18 25 70
+
+        light-to-temperature map:
+        45 77 23
+        81 45 19
+        68 64 13
+
+        temperature-to-humidity map:
+        0 69 1
+        1 0 69
+
+        humidity-to-location map:
+        60 56 37
+        56 93 4
+"""
+
+
 def test_first_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 1, can be indented 
-        """)
-    assert today.solve_first(input_file) == 'SOLUTION TO PART 1'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_first(input_file) == "35"
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 2, can be indented 
-        """)
-    assert today.solve_second(input_file) == 'SOLUTION TO PART 2'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_second(input_file) == "46"
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_first_solution(day_input):
-    assert SOLUTIONS[0] is not None
-    assert today.solve_first(day_input) == SOLUTIONS[0]
+def test_first_solution(day_input, part1_solution):
+    assert part1_solution is not None
+    assert today.solve_first(day_input) == part1_solution
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_second_solution(day_input):
-    assert SOLUTIONS[1] is not None
-    assert today.solve_second(day_input) == SOLUTIONS[1]
+def test_second_solution(day_input, part2_solution):
+    assert part2_solution is not None
+    assert today.solve_second(day_input) == part2_solution
