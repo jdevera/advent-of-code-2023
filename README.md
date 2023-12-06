@@ -1,7 +1,8 @@
 # Introduction
 This is Jacobo de Vera's Advent Of Code 2023 Workbench.
 
-⚠️ **SPOILER ALERT**: This repository contains my solutions (but not my input) ⚠️
+> [!WARNING]
+> ⚠️ **SPOILER ALERT**: This repository contains my solutions (but not my input) ⚠️
 
 # How does this work
 There is a launcher written in Python that assumes Python is used for
