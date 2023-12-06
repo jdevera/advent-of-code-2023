@@ -17,7 +17,9 @@ def parse_args(argv):
 
     subparsers = parser.add_subparsers(help="Subcommands help", required=True, dest='command')
 
-    run_parser = subparsers.add_parser("run")
+    # Run parser
+    # =======================================================================
+    run_parser = subparsers.add_parser("run", help="Run a solution")
     run_parser.add_argument("--input", "-i",
                             nargs="?",
                             help="Input file, with the contents as obtained in the AoC",
@@ -32,7 +34,11 @@ def parse_args(argv):
                             default=Part.ALL,
                             help="Which part of the day puzzle to run")
 
-    test_parser = subparsers.add_parser("test")
+    # =======================================================================
+
+    # Test parser
+    # =======================================================================
+    test_parser = subparsers.add_parser("test", help='Test solutions')
     test_parser.add_argument("--day", "-d", type=int,
                              help="The day of the puzzle you want to test. By default today's",
                              default=None,
@@ -40,21 +46,33 @@ def parse_args(argv):
     test_parser.add_argument("--all", action='store_true',
                              help="Run all tests.")
 
+    # =======================================================================
+
+    # Download parser
+    # =======================================================================
+    dl_parser = subparsers.add_parser("dl", help="Download inputs")
+    dl_parser.add_argument("--all", action='store_true',
+                           help="Download all inputs.")
+    # =======================================================================
+
     args = parser.parse_args(argv[1:])
 
-    if args.day is None:
-        today = datetime.date.today()
-        if today.month != 12:
-            parser.error("Not in December, cannot infer day, use --day N")
-        args.day = today.day
+    module = None
 
-    module = getattr(days, f"day{args.day:02d}", None)
+    if hasattr(args, 'day'):
+        if args.day is None:
+            today = datetime.date.today()
+            if today.month != 12:
+                parser.error("Not in December, cannot infer day, use --day N")
+            args.day = today.day
 
-    if module is None:
-        parser.error(
-            f"Could not find code for that day: {args.day}. Try between 1 and 25.")
+        module = getattr(days, f"day{args.day:02d}", None)
 
-    setattr(args, "module", module)
+        if module is None:
+            parser.error(
+                f"Could not find code for that day: {args.day}. Try between 1 and 25.")
+
+        setattr(args, "module", module)
 
     if args.command == 'run':
         if args.input is None:
@@ -64,6 +82,7 @@ def parse_args(argv):
 
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
-        setattr(module, 'debug', True)
+        if module:
+            setattr(module, 'debug', True)
 
     return args
