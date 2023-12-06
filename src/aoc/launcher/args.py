@@ -58,7 +58,7 @@ def parse_args(argv):
 
     if args.command == 'run':
         if args.input is None:
-            args.input = Path(module.__file__).resolve().parent / "input"
+            args.input = Path(module.__file__).resolve().parent / "data" / "input"
         if not os.path.exists(args.input):
             parser.error(f"Could not find file {args.input}")
 

@@ -2,7 +2,7 @@ import logging
 from pathlib import Path
 
 log = logging.getLogger(__name__)
-_debug = False  ## Whether we are in debug mode
+_debug = False  # Whether we are in debug mode
 
 
 def solve_first(input_file: Path) -> str | None:
