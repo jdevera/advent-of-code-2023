@@ -1,36 +1,32 @@
-import pytest
-
+import logging
 from aoc.days import day02 as today
 
-# TODO: Write the solutions here once you have them verified
-SOLUTIONS: tuple[str | None, ...] = (
-    None,
-    None
-)
+logging.basicConfig(level=logging.DEBUG)
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
+EXAMPLE_INPUT = """
+    Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+    Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
+    Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
+    Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
+    Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+    """
+
+
 def test_first_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 1, can be indented 
-        """)
-    assert today.solve_first(input_file) == 'SOLUTION TO PART 1'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_first(input_file) == '8'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 2, can be indented 
-        """)
-    assert today.solve_second(input_file) == 'SOLUTION TO PART 2'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_second(input_file) == '2286'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_first_solution(day_input):
-    assert SOLUTIONS[0] is not None
-    assert today.solve_first(day_input) == SOLUTIONS[0]
+def test_first_solution(day_input, part1_solution):
+    assert part1_solution is not None
+    assert today.solve_first(day_input) == part1_solution
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_second_solution(day_input):
-    assert SOLUTIONS[1] is not None
-    assert today.solve_second(day_input) == SOLUTIONS[1]
+def test_second_solution(day_input, part2_solution):
+    assert part2_solution is not None
+    assert today.solve_second(day_input) == part2_solution
