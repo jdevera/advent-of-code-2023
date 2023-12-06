@@ -1,36 +1,34 @@
-import pytest
-
 from aoc.days import day03 as today
 
-# TODO: Write the solutions here once you have them verified
-SOLUTIONS: tuple[str | None, ...] = (
-    None,
-    None
-)
+EXAMPLE_INPUT = """
+    467..114..
+    ...*......
+    ..35..633.
+    ......#...
+    617*......
+    .....+.58.
+    ..592.....
+    ......755.
+    ...$.*....
+    .664.598..
+    """
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
+
 def test_first_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 1, can be indented 
-        """)
-    assert today.solve_first(input_file) == 'SOLUTION TO PART 1'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_first(input_file) == "4361"
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_example(input_file_factory):
-    input_file = input_file_factory("""
-        TODO: Replace with example for part 2, can be indented 
-        """)
-    assert today.solve_second(input_file) == 'SOLUTION TO PART 2'
+    input_file = input_file_factory(EXAMPLE_INPUT)
+    assert today.solve_second(input_file) == "467835"
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_first_solution(day_input):
-    assert SOLUTIONS[0] is not None
-    assert today.solve_first(day_input) == SOLUTIONS[0]
+def test_first_solution(day_input, part1_solution):
+    assert part1_solution is not None
+    assert today.solve_first(day_input) == part1_solution
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
-def test_second_solution(day_input):
-    assert SOLUTIONS[1] is not None
-    assert today.solve_second(day_input) == SOLUTIONS[1]
+def test_second_solution(day_input, part2_solution):
+    assert part2_solution is not None
+    assert today.solve_second(day_input) == part2_solution
