@@ -1,3 +1,4 @@
+import logging
 import os
 import subprocess
 from enum import Enum, auto
@@ -5,6 +6,8 @@ from enum import Enum, auto
 import argparse
 import enum
 from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 
 class EnumNameAction(argparse.Action):
@@ -76,3 +79,12 @@ def emojify_flag(flag: bool | None):
     if flag is None:
         return "⬜️"
     return "✅" if flag else "❌"
+
+
+def fetch_input(day: int):
+    from aocd import get_data
+    from aoc import days as days_module
+    input_path = Path(days_module.__file__).resolve().parent / f"day{day:02d}" / "data" / "input"
+    log.debug("Downloading input data for day %d to %s", day, input_path)
+    input_data = get_data(day=day, year=2023)
+    input_path.write_text(input_data)

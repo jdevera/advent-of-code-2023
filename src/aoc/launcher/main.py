@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 from aoc.launcher.args import parse_args
-from aoc.utils import Part
+from aoc.utils import Part, fetch_input
 
 log = logging.getLogger(__name__)
 
@@ -42,17 +42,11 @@ def command_test(args: argparse.Namespace):
 
 
 def command_download(args: argparse.Namespace):
-    from aocd import get_data
     from aocd.get import current_day
-    from aoc import days as days_module
     last_day = current_day()
-    year = 2023
     days = [day for day in range(1, last_day + 1)] if args.all else [last_day]
     for day in days:
-        input_path = Path(days_module.__file__).resolve().parent / f"day{day:02d}" / "data" / "input"
-        log.debug("Downloading input data for day %d to %s", day, input_path)
-        input_data = get_data(day=day, year=year)
-        input_path.write_text(input_data)
+        fetch_input(day)
 
 
 def main(argv=None):

@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 from textwrap import dedent
 import pytest
@@ -29,12 +30,28 @@ def day_data_dir(request: pytest.FixtureRequest) -> Path:
 
 
 @pytest.fixture
-def day_input(day_data_dir: Path) -> Path:
+def tested_day(request: pytest.FixtureRequest) -> int:
+    day_module_name = request.path.resolve().parent.parent.name
+    assert day_module_name.startswith("day")
+    return int(day_module_name[3:])
+
+
+@pytest.fixture
+def day_input(day_data_dir: Path, tested_day: int) -> Path:
     """
     Get the file called input that lives in the day module.
     This assumes tests are under a "test" module in the day folder
     """
     input_file = day_data_dir / FILE_NAME_INPUT
+    if not input_file.exists():
+        from aocd.get import current_day
+        from aoc.utils import fetch_input
+        if tested_day > current_day():
+            logging.info("Input file for day %d not yet available", tested_day)
+            return None
+        logging.info("Could not find %s, will download", str(input_file))
+        fetch_input(tested_day)
+
     assert input_file.exists()
     yield input_file
 
