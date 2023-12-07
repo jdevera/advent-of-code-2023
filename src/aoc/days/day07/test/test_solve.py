@@ -1,33 +1,35 @@
-import pytest
-
 from aoc.days import day07 as today
 
 EXAMPLE_INPUT = """
-        TODO: Replace with example input, can be indented 
+    32T3K 765
+    T55J5 684
+    KK677 28
+    KTJJT 220
+    QQQJA 483
 """
 
 
-# TODO: Write the solutions in the part1.solution and part2.solution files once you have them verified
-
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_first_example(input_file_factory):
     input_file = input_file_factory(EXAMPLE_INPUT)
-    assert today.solve_first(input_file) == 'SOLUTION TO PART 1'
+    assert today.solve_first(input_file) == '6440'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_example(input_file_factory):
     input_file = input_file_factory(EXAMPLE_INPUT)
-    assert today.solve_second(input_file) == 'SOLUTION TO PART 2'
+    assert today.solve_second(input_file) == '5905'
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_first_solution(day_input, part1_solution):
     assert today.solve_first(day_input) == part1_solution
     assert part1_solution is not None
 
 
-@pytest.mark.xfail  # TODO: Remove this once implemented
 def test_second_solution(day_input, part2_solution):
     assert part2_solution is not None
     assert today.solve_second(day_input) == part2_solution
+
+
+def test_lt_hand():
+    ktjjt = today.Hand("KTJJT", bid=1, with_jokers=True)
+    qqqja = today.Hand("QQQJA", bid=1, with_jokers=True)
+    assert qqqja < ktjjt
